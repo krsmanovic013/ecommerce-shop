@@ -1,11 +1,33 @@
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
-import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CartButtons from "./CartButtons";
+import { links } from "../utils/constants";
+import { FaBars } from "react-icons/fa";
 
 const NavBar = () => {
-  return <div>NavBar</div>;
+  return (
+    <NavContainer>
+      <div className="nav-center">
+        <div className="nav-header">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+          <button type="button" className="nav-toggle">
+            <FaBars />
+          </button>
+        </div>
+        <ul className="nav-links">
+          {links.map(({ id, url, text }) => (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
+        </ul>
+        <CartButtons />
+      </div>
+    </NavContainer>
+  );
 };
 
 const NavContainer = styled.nav`
