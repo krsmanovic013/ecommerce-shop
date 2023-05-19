@@ -5,9 +5,11 @@ import { links } from "../utils/constants";
 import styled from "styled-components";
 import CartButtons from "./CartButtons";
 import { useProductContext } from "../context/products_context";
+import { useUserContext } from "../context/user_context";
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductContext();
+  const { myUser } = useUserContext();
   return (
     <SidebarContainer>
       <aside
@@ -31,11 +33,13 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          <li>
-            <Link to="/checkout" onClick={() => closeSidebar()}>
-              checkout
-            </Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to="/checkout" onClick={() => closeSidebar()}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>
