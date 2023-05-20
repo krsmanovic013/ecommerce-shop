@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PageHero } from "../components";
-import aboutImg from "../assets/hero-bcg.jpeg";
+import aboutImg from "../assets/about.jpg";
 
 const AboutPage = () => {
   return (
@@ -10,16 +10,19 @@ const AboutPage = () => {
         <img src={aboutImg} alt="desk image" />
         <article>
           <div className="title">
-            <h2>our story</h2>
+            <h2>About us</h2>
             <div className="underline"></div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi,
-            possimus delectus nobis omnis soluta nesciunt hic harum magni totam
-            autem cupiditate natus assumenda? Nisi blanditiis ipsum quis ratione
-            hic cum enim temporibus laboriosam amet recusandae culpa placeat, in
-            sunt ducimus officiis et optio corporis vel excepturi iusto iste!
-            Saepe, ut.
+            At the Krsman Store, we believe that furniture goes beyond
+            functionality; it's an expression of your unique style and a
+            reflection of your personality. With an extensive collection of
+            handpicked pieces, we aim to inspire and transform your living
+            spaces into havens of comfort and elegance. Our knowledgeable staff
+            is dedicated to providing exceptional service, guiding you through
+            the selection process to make your design dreams a reality. Step
+            into our world and discover a realm of timeless beauty and endless
+            possibilities.
           </p>
         </article>
       </Wrapper>

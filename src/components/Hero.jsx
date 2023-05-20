@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import heroBcg from "../assets/hero-bcg.jpeg";
-import heroBcg2 from "../assets/hero-bcg-2.jpeg";
+import heroBcg3 from "../assets/hero-bcg3.jpg";
 
 const Hero = () => {
   return (
@@ -9,12 +9,11 @@ const Hero = () => {
       <article className="content">
         <h1>
           design your <br />
-          comfort zone
+          dream home
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit
-          sunt aliquid velit. Aperiam quidem quasi beatae, doloribus voluptatem
-          deserunt!
+          Unleash your dreams with our extraordinary furniture. Welcome to our
+          store, where imagination meets reality.
         </p>
         <Link to="/products" className="btn hero-btn">
           shop now
@@ -22,7 +21,7 @@ const Hero = () => {
       </article>
       <article className="img-container">
         <img src={heroBcg} alt="hero" className="main-img" />
-        <img src={heroBcg2} alt="image" className="accent-img" />
+        <img src={heroBcg3} alt="image" className="accent-img" />
       </article>
     </Wrapper>
   );

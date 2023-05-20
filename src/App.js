@@ -9,7 +9,9 @@ import {
   Checkout,
   About,
 } from "./pages";
+import { useUserContext } from "./context/user_context";
 function App() {
+  const { myUser } = useUserContext();
   return (
     // <AuthWrapper>
     <Router>
@@ -21,8 +23,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<SingleProduct />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="error" element={<Error />} />
+        <Route path="checkout" element={myUser ? <Checkout /> : <Error />} />
       </Routes>
       <Footer />
     </Router>

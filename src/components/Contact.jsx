@@ -7,9 +7,8 @@ const Contact = () => {
         <h3>Join our newsletter and get 20% off</h3>
         <div className="content">
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            perferendis, quaerat repellat eaque fugiat consequatur vel beatae
-            quis blanditiis voluptas.
+            Stay in the loop with the latest trends, exclusive offers, and
+            design inspiration. Join our newsletter for a stylish journey ahead.
           </p>
           <form
             className="contact-form"

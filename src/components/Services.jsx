@@ -11,9 +11,9 @@ const Services = () => {
             built only for you
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            ratione reprehenderit, magnam consectetur dolorum harum laborum
-            neque error. Possimus, itaque.
+            Transform your space with our exquisite furniture collection, where
+            style meets comfort for your dream home, revitalize your home with
+            quality furniture.
           </p>
         </article>
         <div className="services-center">
