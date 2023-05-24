@@ -7,14 +7,14 @@ import {
 } from "../actions";
 
 const cart_reducer = (state, action) => {
-  if (action.type == ADD_TO_CART) {
+  if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload;
 
-    const tempItem = state.cart.find((a) => a.id == id + color);
+    const tempItem = state.cart.find((a) => a.id === id + color);
 
     if (tempItem) {
       const tempCart = state.cart.map((a) => {
-        if (a.id == id + color) {
+        if (a.id === id + color) {
           let newAmount = a.amount + amount;
           if (newAmount > a.max) {
             newAmount = a.max;
@@ -39,19 +39,19 @@ const cart_reducer = (state, action) => {
     }
   }
 
-  if (action.type == REMOVE_CART_ITEM) {
-    const tempCart = state.cart.filter((a) => a.id != action.payload);
+  if (action.type === REMOVE_CART_ITEM) {
+    const tempCart = state.cart.filter((a) => a.id !== action.payload);
     return { ...state, cart: tempCart };
   }
-  if (action.type == CLEAR_CART) {
+  if (action.type === CLEAR_CART) {
     return { ...state, cart: [] };
   }
-  if (action.type == TOGGLE_CART_ITEM_AMOUNT) {
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
     const { id, value } = action.payload;
 
-    const tempCart = state.cart.map((a) => {
-      if (a.id == id) {
-        if (value == "inc") {
+    const tempCart = state.cart?.map((a) => {
+      if (a.id === id) {
+        if (value === "inc") {
           //increase
           let newAmount = a.amount + 1;
           if (newAmount > a.max) {
@@ -59,7 +59,7 @@ const cart_reducer = (state, action) => {
           }
           return { ...a, amount: newAmount };
         }
-        if (value == "dec") {
+        if (value === "dec") {
           //decrease
           let newAmount = a.amount - 1;
           if (newAmount < 1) {
@@ -74,7 +74,7 @@ const cart_reducer = (state, action) => {
 
     return { ...state, cart: tempCart };
   }
-  if (action.type == COUNT_CART_TOTALS) {
+  if (action.type === COUNT_CART_TOTALS) {
     const { items, amount } = state.cart.reduce(
       (total, cartItem) => {
         const { amount, price } = cartItem;
@@ -93,7 +93,6 @@ const cart_reducer = (state, action) => {
   }
 
   return state;
-  throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default cart_reducer;

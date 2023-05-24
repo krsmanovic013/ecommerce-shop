@@ -6,8 +6,7 @@ const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   const [myUser, setMyUser] = useState(false);
 
@@ -17,7 +16,7 @@ export const UserProvider = ({ children }) => {
     } else {
       setMyUser(false);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   return (
     <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>

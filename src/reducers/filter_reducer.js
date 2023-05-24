@@ -11,7 +11,7 @@ import {
 
 const filter_reducer = (state, action) => {
   //LOAD
-  if (action.type == LOAD_PRODUCTS) {
+  if (action.type === LOAD_PRODUCTS) {
     const array = action.payload.map((a) => a.price);
     const maxPrice = Math.max(...array);
     return {
@@ -22,30 +22,30 @@ const filter_reducer = (state, action) => {
     };
   }
   //GRID AND LIST
-  if (action.type == SET_GRIDVIEW) {
+  if (action.type === SET_GRIDVIEW) {
     return { ...state, grid_view: true };
   }
-  if (action.type == SET_LISTVIEW) {
+  if (action.type === SET_LISTVIEW) {
     return { ...state, grid_view: false };
   }
   //SORT
-  if (action.type == UPDATE_SORT) {
+  if (action.type === UPDATE_SORT) {
     return { ...state, sort: action.payload };
   }
 
-  if (action.type == SORT_PRODUCTS) {
+  if (action.type === SORT_PRODUCTS) {
     const { sort, filtered_products } = state;
     let tempProducts = [...filtered_products];
-    if (sort == "price-lowest") {
+    if (sort === "price-lowest") {
       tempProducts.sort((a, b) => a.price - b.price);
     }
-    if (sort == "price-highest") {
+    if (sort === "price-highest") {
       tempProducts.sort((a, b) => b.price - a.price);
     }
-    if (sort == "name-a") {
+    if (sort === "name-a") {
       tempProducts.sort((a, b) => a.name.localeCompare(b.name));
     }
-    if (sort == "name-z") {
+    if (sort === "name-z") {
       tempProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
     return { ...state, filtered_products: tempProducts };
@@ -53,7 +53,7 @@ const filter_reducer = (state, action) => {
 
   //FILTER
 
-  if (action.type == UPDATE_FILTERS) {
+  if (action.type === UPDATE_FILTERS) {
     const { name, value } = action.payload;
     return {
       ...state,
@@ -64,7 +64,7 @@ const filter_reducer = (state, action) => {
     };
   }
 
-  if (action.type == FILTER_PRODUCTS) {
+  if (action.type === FILTER_PRODUCTS) {
     const { all_products } = state;
     const { text, category, color, company, shipping, price, max_price } =
       state.filters;
@@ -75,27 +75,29 @@ const filter_reducer = (state, action) => {
         a.name.toLowerCase().startsWith(text)
       );
     }
-    if (category != "all") {
-      tempProducs = tempProducs.filter((a) => a.category == category);
+    if (category !== "all") {
+      tempProducs = tempProducs.filter((a) => a.category === category);
     }
-    if (company != "all") {
+    if (company !== "all") {
       tempProducs = tempProducs.filter((a) => a.company == company);
     }
 
-    if (color != "all") {
+    if (color !== "all") {
       console.log(tempProducs);
-      tempProducs = tempProducs.filter((a) => a.colors.some((x) => x == color));
+      tempProducs = tempProducs.filter((a) =>
+        a.colors.some((x) => x === color)
+      );
     }
     if (shipping) {
       tempProducs = tempProducs.filter((a) => a.shipping);
     }
-    if (price != max_price) {
+    if (price !== max_price) {
       tempProducs = tempProducs.filter((a) => a.price <= price);
     }
 
     return { ...state, filtered_products: tempProducs };
   }
-  if (action.type == CLEAR_FILTERS) {
+  if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
       filters: {
@@ -110,7 +112,6 @@ const filter_reducer = (state, action) => {
   }
 
   return state;
-  throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default filter_reducer;
